@@ -2,6 +2,7 @@ name: Generate ADR TOC
 on: [push, pull_request]
 jobs:
   eslint:
+    runs-on: ubuntu-latest
     name: genadr_readme
     steps:
       - uses: jules2689/adr-action@main
