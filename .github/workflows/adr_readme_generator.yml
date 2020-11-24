@@ -5,6 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     name: genadr_readme
     steps:
+      - uses: actions/checkout@main
+        with:
+          fetch-depth: 0
       - uses: jules2689/adr-actions@main
         with:
           adr-dir: 'doc/adr' # Optional. Directory in which ADRs are located. Defaults to contents of .adr-dir
