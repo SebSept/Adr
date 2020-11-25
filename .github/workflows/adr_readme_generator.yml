@@ -9,7 +9,6 @@ jobs:
         with:
           fetch-depth: 0
       - run : pwd
-        -
       - uses: jules2689/adr-actions@main
         with:
           adr-dir: '{{ $GITHUB_WORKSPACE }}/Adr/doc/adr' #
