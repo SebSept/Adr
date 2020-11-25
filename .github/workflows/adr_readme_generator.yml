@@ -10,7 +10,7 @@ jobs:
           fetch-depth: 0
       - uses: jules2689/adr-actions@main
         with:
-          adr-dir: '{{ $GITHUB_WORKSPACE }}/doc/adr' # Optional. Directory in which ADRs are located. Defaults to contents of .adr-dir
+          adr-dir: '{{ $GITHUB_WORKSPACE }}/doc/adr' #
           adr-tool-repo: 'https://github.com/npryce/adr-tools.git' # Not Optional. ADR Tool Repo location
           adr-tool-version: '3.0.0' # Optional. Version of the Tools to use.
           github_token: ${{ secrets.GITHUB_TOKEN }} # Optional. Token with which to commit
