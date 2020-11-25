@@ -9,7 +9,7 @@ jobs:
         with:
           fetch-depth: 0
       - run: |
-          ls
+          ls -a
           pwd
 #      - uses: jules2689/adr-actions@main
 #        with:
