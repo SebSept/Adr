@@ -1,17 +1,17 @@
 name: Generate ADR TOC
 on: [push, pull_request]
 jobs:
-  eslint:
+  adrtoc:
     runs-on: ubuntu-latest
-    name: genadr_readme
+    name: Generate ADR TOC
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - run : pwd;ls -l
-#      - uses: jules2689/adr-actions@main
-#        with:
-#          adr-dir: '{{ $GITHUB_WORKSPACE }}/Adr/doc/adr' #
-#          adr-tool-repo: 'https://github.com/npryce/adr-tools.git' # Not Optional. ADR Tool Repo location
-#          adr-tool-version: '3.0.0' # Optional. Version of the Tools to use.
-#          github_token: ${{ secrets.GITHUB_TOKEN }} # Optional. Token with which to commit
+#      - run : pwd;ls -l
+      - uses: jules2689/adr-actions@main
+        with:
+          adr-dir: '/home/runner/work/Adr/Adr/doc/adr'
+          adr-tool-repo: 'https://github.com/npryce/adr-tools.git' # Not Optional. ADR Tool Repo location
+          adr-tool-version: '3.0.0' # Optional. Version of the Tools to use.
+          github_token: ${{ secrets.GITHUB_TOKEN }} # Optional. Token with which to commit
