@@ -9,22 +9,11 @@ jobs:
         with:
           fetch-depth: 0
       - run: |
-          echo "input : ${{ inputs.adr-dir }}"
-          ADR_DIR="${{ inputs.adr-dir }}"
           ls
           pwd
-          if [ -z "$ADR_DIR" ] && [ -f .adr-dir ]
-          then
-            ADR_DIR="$(cat .adr-dir)"
-          else
-            echo 'pas d adr file'
-            exit 1
-          fi
-          echo "Setting ADR DIR to $ADR_DIR"
-          echo "::set-output name=ADR_DIR::$ADR_DIR"
-      - uses: jules2689/adr-actions@main
-        with:
-          adr-dir: '/home/runner/work/Adr/Adr/doc/adr/' # ignored by the action :(
-          adr-tool-repo: 'https://github.com/npryce/adr-tools.git' # Not Optional. ADR Tool Repo location
-          adr-tool-version: '3.0.0' # Optional. Version of the Tools to use.
-          github_token: ${{ secrets.GITHUB_TOKEN }} # NOT Optional. Token with which to commit
+#      - uses: jules2689/adr-actions@main
+#        with:
+#          adr-dir: '/home/runner/work/Adr/Adr/doc/adr/' # ignored by the action :(
+#          adr-tool-repo: 'https://github.com/npryce/adr-tools.git' # Not Optional. ADR Tool Repo location
+#          adr-tool-version: '3.0.0' # Optional. Version of the Tools to use.
+#          github_token: ${{ secrets.GITHUB_TOKEN }} # NOT Optional. Token with which to commit
