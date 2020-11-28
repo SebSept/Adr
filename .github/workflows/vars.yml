@@ -6,8 +6,8 @@ on: push
 # @todo this could be fetched from github env var
 env:
   MODULE_NAME: developer_tools
-  MODULE_NAME2: ${{GITHUB_REPOSITORY#$GITHUB_ACTOR/}}
-  MODULE_NAME3: ${{GITHUB_REPOSITORY#SebSept}}
+  MODULE_NAME2: ${{ GITHUB_REPOSITORY#${{GITHUB_ACTOR}}/ }}
+  MODULE_NAME3: ${{ GITHUB_REPOSITORY#SebSept }}
 
 jobs:
   ps_release:
