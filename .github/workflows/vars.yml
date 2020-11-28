@@ -7,8 +7,7 @@ on: push
 env:
   MODULE_NAME: developer_tools
   MODULE_NAME2: ${{ github.actor }}
-#  MODULE_NAME2: ${{ GITHUB_REPOSITORY#${{ GITHUB_ACTOR }}/ }}
-#  MODULE_NAME3: ${{ GITHUB_REPOSITORY#SebSept }}
+  MODULE_NAME3: ${{ github.repository#github.repository_owner/ }}
 
 jobs:
   ps_release:
@@ -25,8 +24,8 @@ jobs:
           echo Module name   : $MODULE_NAME
           echo Module name 2 : $MODULE_NAME2
           echo Module name 3 : $MODULE_NAME3
-          echo ZIP_NAME : ${ZIP_NAME#refs/*/}
+          echo ZIP_NAME : ${ZIP_NAME}
           echo MYVAR = $MYVAR
           echo MYVAR2 = $MYVAR2
         env:
-          ZIP_NAME: ${{env.MODULE_NAME}}_${{ github.ref }}.zip
+          ZIP_NAME: ${{env.MODULE_NAME}}_${{ github.ref#refs/*/ }}.zip
