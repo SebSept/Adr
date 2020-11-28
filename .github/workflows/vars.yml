@@ -1,13 +1,11 @@
 name: "vars"
 
 on: push
-#    tags:
-#      - "*"
-# @todo this could be fetched from github env var
+# ça va rater ligne 22
 env:
-  MODULE_NAME: developer_tools
-  MODULE_NAME2: ${{ github.actor }}
-  MODULE_NAME3: ${{ github.repository#{{ github.repository_owner }}/ }}
+  ORGANISATION_NAME: friends-of-presta
+#  MODULE_NAME2: ${{ github.actor }}
+#  MODULE_NAME3: ${{ {github.repository#github.repository_owner/} }}
 
 jobs:
   ps_release:
@@ -21,7 +19,8 @@ jobs:
 
       - name: "Echos"
         run: |
-          echo Module name   : $MODULE_NAME
+          echo gh : {{ github.ref }}
+          echo Orga   : $MODULE_NAME
           echo Module name 2 : $MODULE_NAME2
           echo Module name 3 : $MODULE_NAME3
           echo ZIP_NAME : ${ZIP_NAME}
