@@ -22,8 +22,8 @@ jobs:
         run: |
           echo Module name   : $MODULE_NAME
           echo Module name 2 : $MODULE_NAME2
-          echo ZIP_NAME : $ZIP_NAME
+          echo ZIP_NAME : ${ZIP_NAME#refs/*/}
           echo MYVAR = $MYVAR
           echo MYVAR2 = $MYVAR2
         env:
-          ZIP_NAME: ${{env.MODULE_NAME}}_${{GITHUB_REF#refs/*/}}.zip
+          ZIP_NAME: ${{env.MODULE_NAME}}_${{ GITHUB_REF }}.zip
