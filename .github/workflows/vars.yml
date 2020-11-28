@@ -1,7 +1,7 @@
 name: "vars"
 
 on: push
-# ça va rater ligne 22
+
 env:
   ORGANISATION_NAME: friends-of-presta
 #  MODULE_NAME2: ${{ github.actor }}
@@ -27,4 +27,4 @@ jobs:
           echo MYVAR = $MYVAR
           echo MYVAR2 = $MYVAR2
         env:
-          ZIP_NAME: ${{env.MODULE_NAME}}_${{ github.ref#refs/*/ }}.zip
+          ZIP_NAME: ${{env.MODULE_NAME}}_${{ github.ref }}.zip
