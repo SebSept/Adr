@@ -25,6 +25,6 @@ jobs:
         run: |
           echo 'On est prêt pour la création du module ${{ env.MODULE_NAME}} en version ${{ env.VERSION }}.'
           echo "Dans le zip 1: ${{ env.ZIP_NAME }} 2: $ZIP_NAME"
-          echo "var d'env de l'étape précédente encore dispo ? : $REF / $VERSION
+          echo "var d'env de l'étape précédente encore dispo ? : $REF / $VERSION"
         env:
           ZIP_NAME: ${{ env.MODULE_NAME }}_${{ env.VERSION }}.zip
