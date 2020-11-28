@@ -26,6 +26,4 @@ jobs:
           echo MYVAR = $MYVAR
           echo MYVAR2 = $MYVAR2
         env:
-          ZIP_NAME: ${{env.MODULE_NAME}}_${{GITHUB_REF}}.zip
-          ZIP_NAMEX: ${{env.MODULE_NAME}}_${{GITHUB_REF}}.zip
-          ZIP_NAMEXX: ${{env.MODULE_NAME}}_${GITHUB_REF}.zip
+          ZIP_NAME: ${{env.MODULE_NAME}}_${GITHUB_REF}.zip
