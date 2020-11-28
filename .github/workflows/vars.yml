@@ -18,15 +18,15 @@ jobs:
       - name: "Set an env var"
         run: |
           echo "MYVAR=yellow" >> $GITHUB_ENV
-          echo "MYVAR2=${{GITHUB_REPOSITORY#$GITHUB_ACTOR/}}" >> $GITHUB_ENV
+          echo "MYVAR2=${GITHUB_REPOSITORY#$GITHUB_ACTOR/}" >> $GITHUB_ENV
 
       - name: "Echos"
         run: |
           echo Module name   : $MODULE_NAME
           echo Module name 2 : $MODULE_NAME2
           echo Module name 3 : $MODULE_NAME3
-          echo ZIP_NAME : ${{ZIP_NAME#refs/*/}}
+          echo ZIP_NAME : ${ZIP_NAME#refs/*/}
           echo MYVAR = $MYVAR
           echo MYVAR2 = $MYVAR2
         env:
-          ZIP_NAME: ${{env.MODULE_NAME}}_${GITHUB_REF}.zip
+          ZIP_NAME: ${{env.MODULE_NAME}}_${{GITHUB_REF}}.zip
