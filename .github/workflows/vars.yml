@@ -20,4 +20,4 @@ jobs:
           echo gh : ${{ github.ref }}
           echo ZIP_NAME : ${ZIP_NAME}
         env:
-          ZIP_NAME: ${{env.MODULE_NAME}}_${{ github.ref }}.zip
+          ZIP_NAME: ${{ env.MODULE_NAME }}_${{ github.ref }}.zip
