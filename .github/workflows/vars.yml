@@ -1,0 +1,29 @@
+name: "vars"
+
+on: push
+#    tags:
+#      - "*"
+# @todo this could be fetched from github env var
+env:
+  MODULE_NAME: developer_tools
+  MODULE_NAME2: ${${GITHUB_REPOSITORY#$GITHUB_ACTOR}#/}
+
+jobs:
+  ps_release:
+    runs-on: "ubuntu-latest"
+
+    steps:
+      - name: "Set an env var"
+        run: |
+          echo "MYVAR=yellow" >> $GITHUB_ENV
+          echo "MYVAR2=${${GITHUB_REPOSITORY#$GITHUB_ACTOR}#/}" >> $GITHUB_ENV
+
+      - name: "Echos"
+        run: |
+          echo Module name   : $MODULE_NAME
+          echo Module name 2 : $MODULE_NAME2
+          echo ZIP_NAME : $ZIP_NAME
+          echo MYVAR = $MYVAR
+          echo MYVAR2 = $MYVAR2
+        env:
+          ZIP_NAME: ${{env.MODULE_NAME}}_${{GITHUB_REF#refs/*/}}.zip
