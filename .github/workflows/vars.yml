@@ -3,7 +3,8 @@ name: "vars"
 on: push
 
 env:
-  ORGANISATION_NAME: friends-of-presta
+#  ORGANISATION_NAME: friends-of-presta
+  ORGANISATION_NAME: SebSept
 #  MODULE_NAME2: ${{ github.actor }}
 #  MODULE_NAME3: ${{ {github.repository#github.repository_owner/} }}
 
@@ -12,12 +13,18 @@ jobs:
     runs-on: "ubuntu-latest"
 
     steps:
-      - name: "Setup $MODULE_NAME"
-        run: echo "MODULE_NAME=${GITHUB_REPOSITORY#$ORGANISATION_NAME/}" >> $GITHUB_ENV
+      - name: "Setup zipname"
+        run: |
+          MODULE_NAME=${GITHUB_REPOSITORY#$ORGANISATION_NAME/}
+          echo "MODULE_NAME=${MODULE_NAME}" >> $GITHUB_ENV
+          REF='${{ github.ref }}'
+          VERSION=${REF#refs/*/}
+          echo "VERSION=${VERSION}" >> $GITHUB_ENV
 
       - name: "Echos"
         run: |
-          echo gh : ${{ github.ref }}
-          echo ZIP_NAME : ${ZIP_NAME}
+          echo 'On est prêt pour la création du module ${{ env.MODULE_NAME}} en version ${{ env.VERSION }}.'
+          echo "Dans le zip 1: ${{ env.ZIP_NAME }} 2: $ZIP_NAME"
+          echo "var d'env de l'étape précédente encore dispo ? : $REF / $VERSION
         env:
-          ZIP_NAME: ${{ env.MODULE_NAME }}_${{ github.ref }}.zip
+          ZIP_NAME: ${{ env.MODULE_NAME }}_${{ env.VERSION }}.zip
