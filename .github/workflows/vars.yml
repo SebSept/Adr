@@ -1,9 +1,9 @@
-name: "vars"
+name: "ps_release"
 
 on:
   push:
-    tags: '*'
-    branches: "essais_divers"
+    tags:
+      - "*"
 
 jobs:
   ps_release:
@@ -11,4 +11,13 @@ jobs:
 
     steps:
       - name: "Setup zipname. Exports $MODULE_NAME, $VERSION & $ZIP_FILE"
-        uses: SebSept/module-release-action@early_dev
+        run: |
+          MODULE_NAME=${GITHUB_REPOSITORY#*/}
+          echo "MODULE_NAME=${MODULE_NAME}" >> $GITHUB_ENV
+          REF='${{ github.ref }}'
+          echo "VERSION=${VERSION}" >> $GITHUB_ENV
+          VERSION=${REF#refs/*/}
+          echo "ZIP_FILE=${MODULE_NAME}_${VERSION}.zip" >> $GITHUB_ENV
+          echo zip : $ZIP_FILE
+          echo version : $VERSION
+          echo module : $MODULE_NAME
