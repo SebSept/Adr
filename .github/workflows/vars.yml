@@ -1,10 +1,9 @@
 name: "vars"
 
-on: push
-
-env:
-  #  ORGANISATION_NAME: friends-of-presta
-  ORGANISATION_NAME: SebSept
+on:
+  push:
+    tags: '*'
+    branches: "essais_divers"
 
 jobs:
   ps_release:
