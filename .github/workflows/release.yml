@@ -30,14 +30,15 @@ jobs:
           ls | grep -v newdir | xargs -I{} mv {} newdir
           mv newdir ${{ env.MODULE_NAME }}
 
-      - name: "Archive Release"
+      - name: "Create zip"
         uses: thedoctor0/zip-release@master
         with:
           filename: '${{ env.ZIP_FILE }}'
           exclusions: '*.git* README.md config_de.xml config.xml'
           type: 'zip'
 
-      - uses: "marvinpinto/action-automatic-releases@latest"
+      - name: "Create Release with zip."
+        uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
